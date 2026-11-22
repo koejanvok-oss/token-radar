@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — the pre-token board</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">◉</div>
+    <div>
+      <h1>Launch Radar</h1>
+      <p class="sub">Every protocol that records no token, ranked by what its launch would be worth — and how to farm it.</p>
+    </div>
+  </div>
+  <div class="meta"><span id="asof"></span><span id="src"></span></div>
+</header>
+
+<section class="kpis" id="kpis"></section>
+
+<nav class="tabs">
+  <button data-tab="board" class="on">Board</button>
+  <button data-tab="live">Live tokens</button>
+  <button data-tab="method">How the radar works</button>
+</nav>
+
+<main>
+  <section id="tab-board" class="tab on">
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search a protocol…" aria-label="Search protocols">
+      <select id="cat" aria-label="Filter by category"></select>
+      <select id="sort" aria-label="Sort the board">
+        <option value="rank">Sort: rank</option>
+        <option value="implied">Sort: implied value</option>
+        <option value="tvl">Sort: TVL</option>
+        <option value="growth">Sort: 7-day growth</option>
+        <option value="age">Sort: age</option>
+        <option value="odds">Sort: launch odds</option>
+      </select>
+      <label class="check"><input id="wl" type="checkbox"> Watchlist only</label>
+      <span id="count" class="count"></span>
+    </div>
+    <table class="board">
+      <thead><tr>
+        <th>#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th>
+        <th class="num">Launch odds</th><th class="num">Implied value</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="note">Implied value is this radar's own claim, never make.fun's. A protocol on the board records no token in DefiLlama's data — it may still have one its record does not carry.</p>
+  </section>
+
+  <section id="tab-live" class="tab">
+    <p class="lede">These protocols already trade. Their values are the market's own, not the model's — they are the comps the fitted curve learned from, kept apart from the ranked board.</p>
+    <table class="board">
+      <thead><tr><th>Protocol</th><th>Category</th><th>Chains</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">Mcap / TVL</th><th class="num">7d</th></tr></thead>
+      <tbody id="liveRows"></tbody>
+    </table>
+  </section>
+
+  <section id="tab-method" class="tab">
+    <div class="method" id="method"></div>
+  </section>
+</main>
+
+<aside id="detail" class="detail" hidden>
+  <button id="closeDetail" class="close" aria-label="Close detail">×</button>
+  <div id="detailBody"></div>
+</aside>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
